@@ -1,4 +1,3 @@
-import React from "react";
 import CardMovie from "../CardMovie";
 import { MovieDetail } from "@/lib/apis/movies/type";
 
