@@ -53,8 +53,7 @@ const App = () => {
   return (
     <Layout>
       <div className="flex flex-col gap-10 items-center">
-        <h1 className="text-7xl">MOVIE KITA</h1>
-        <div className="self-start pl-7 text-5xl">Now Playing</div>
+        <div className="self-start pl-7 pt-7 text-5xl">Now Playing</div>
         <div className="flex justify-center">
           <CarouselMovie movie={nowPlaying} />
         </div>
@@ -65,7 +64,7 @@ const App = () => {
               return <CardMovie key={index} data={item} />;
             })}
         </div>
-        <div className="col-span-2 flex justify-between">
+        <div className="col-span-2 flex justify-between gap-10">
           <svg
             stroke="currentColor"
             fill="currentColor"

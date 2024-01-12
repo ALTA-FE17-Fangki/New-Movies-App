@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/carousel";
 import { PropsCarouselMovie } from "@/lib/types/components";
 import Autoplay from "embla-carousel-autoplay";
+import { Link } from "react-router-dom";
 
 const CarouselMovie = (props: PropsCarouselMovie) => {
   const { movie } = props;
@@ -28,13 +29,15 @@ const CarouselMovie = (props: PropsCarouselMovie) => {
         {movie.map((item, index) => (
           <CarouselItem key={index} className="basis-1/5">
             <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center">
-                  <span className="text-3xl font-semibold">
-                    <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
-                  </span>
-                </CardContent>
-              </Card>
+              <Link to={`/detail/${item.id}`}>
+                <Card>
+                  <CardContent className="flex aspect-square items-center justify-center">
+                    <span className="text-3xl font-semibold">
+                      <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} />
+                    </span>
+                  </CardContent>
+                </Card>
+              </Link>
             </div>
           </CarouselItem>
         ))}
