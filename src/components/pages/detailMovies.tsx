@@ -3,11 +3,14 @@ import { MovieDetail, Videos } from "@/lib/apis/movies/index";
 import { useParams } from "react-router-dom";
 import { getData, getVideo } from "@/lib/apis/movies/api";
 import Layout from "../Layout";
+import { Button } from "../ui/button";
+import { useData } from "@/DataContext";
 
 const DetailMovies = () => {
   const { id } = useParams();
   const [data, setData] = useState<MovieDetail>();
   const [video, setVideo] = useState<Videos>();
+  const { favorites, changeFavorite } = useData();
 
   useEffect(() => {
     if (id) {
@@ -60,6 +63,11 @@ const DetailMovies = () => {
                   ))}
                 </div>
               </div>
+              <Button onClick={() => changeFavorite(data)}>
+                {favorites.some((movie) => movie.id === data.id)
+                  ? "REMOVE FROM FAVORITES"
+                  : "ADD TO FAVORITES"}
+              </Button>
               {video && video.results.length > 0 && (
                 <div className="col-span-1 mt-4 pb-8 flex justify-center items-center">
                   <iframe

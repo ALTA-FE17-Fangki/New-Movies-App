@@ -1,18 +1,22 @@
+import { useData } from "@/DataContext";
 import CardMovie from "../CardMovie";
-import { MovieDetail } from "@/lib/apis/movies/type";
+import Layout from "../Layout";
 
 const Favorites = () => {
-  const favoriteMovie = localStorage.getItem("favoriteMovie");
-  const arrFavorite: MovieDetail[] = favoriteMovie ? JSON.parse(favoriteMovie) : [];
+  const { favorites } = useData();
+  console.log(favorites);
   return (
-    <div>
-      <div className="grid grid-cols-4 justify-items-center text-center gap-8 overflow-hidden">
-        {arrFavorite &&
-          arrFavorite.map((item, index) => {
-            return <CardMovie key={index} data={item} />;
-          })}
+    <Layout>
+      <div className="flex flex-col gap-10 items-center">
+        <div className="self-start pl-7 text-5xl">Favorites</div>
+        <div className="grid grid-cols-4 justify-items-center text-center gap-8 overflow-hidden">
+          {favorites &&
+            favorites.map((item, index) => {
+              return <CardMovie key={index} data={item} />;
+            })}
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 
